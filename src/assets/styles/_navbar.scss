@@ -1,0 +1,17 @@
+nav {
+  position: fixed;
+  width: 100%;
+  line-height: 60px;
+  user-select: none;
+  background-color: white;
+  z-index: 100;
+  box-shadow: 0px 3px 6px #00000029;
+}
+nav img {
+  width: 5%;
+}
+@media screen and (max-width: 800px) {
+  nav img {
+    width: 13%;
+  }
+}
