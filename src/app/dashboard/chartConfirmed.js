@@ -44,7 +44,7 @@ class ChartConfirmed extends Component {
     },
     stepsize: 1,
   };
-  render() {
+  componentDidMount() {
     let covidDailyConfirm = [];
     let covidDate = [];
     fetch("https://api.covid19india.org/states_daily.json")
@@ -75,7 +75,8 @@ class ChartConfirmed extends Component {
           },
         });
       });
-
+  }
+  render() {
     return (
       <div className="row">
         <div className="col-md-12 grid-margin">

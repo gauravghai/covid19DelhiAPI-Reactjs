@@ -13,7 +13,7 @@
   font-size: calc(#{$default-font-size} - 0.05rem);
   font-family: $type1;
   font-weight: 400;
-  a {
+  .brand-name {
     background: linear-gradient(to right, #ff8a00, #da1b60);
     background-color: black;
     -webkit-background-clip: text;

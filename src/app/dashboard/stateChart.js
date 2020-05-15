@@ -22,7 +22,7 @@ class DistrictPieChart extends Component {
       },
     },
   };
-  render() {
+  componentDidMount() {
     let covidConfirm = [];
     let covidDistrict = [];
     fetch("https://api.covid19india.org/v2/state_district_wise.json")
@@ -75,7 +75,8 @@ class DistrictPieChart extends Component {
           },
         });
       });
-
+  }
+  render() {
     return (
       <div className="col-sm-6 col-md-6 col-lg-6 grid-margin stretch-card">
         <div className="card">

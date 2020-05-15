@@ -24,36 +24,38 @@ export class Dashboard extends Component {
       delhiDailyDeath: null,
     };
   }
-  async componentDidMount() {
-    const url = "https://api.covid19india.org/data.json";
-    const response = await fetch(url);
-    const data = await response.json();
-    this.setState({ covidCases: data, loading: false });
-    console.log(data);
-    this.state.covidCases.statewise.map((covid) =>
-      covid.statecode == "DL"
-        ? this.setState({
-            delhiConfirm: covid.confirmed,
-            delhiDailyConfirm: covid.deltaconfirmed,
-            delhiRecover: covid.recovered,
-            delhiDailyRecover: covid.deltarecovered,
-            delhiActive: covid.active,
-            delhiDeath: covid.deaths,
-            delhiDailyDeath: covid.deltadeaths,
-          })
-        : null
-    );
+  componentDidMount() {
+    fetch("https://api.covid19india.org/data.json")
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({ covidCases: data, loading: false });
+        console.log(data);
+        this.state.covidCases.statewise.map((covid) =>
+          covid.statecode == "DL"
+            ? this.setState({
+                delhiConfirm: covid.confirmed,
+                delhiDailyConfirm: covid.deltaconfirmed,
+                delhiRecover: covid.recovered,
+                delhiDailyRecover: covid.deltarecovered,
+                delhiActive: covid.active,
+                delhiDeath: covid.deaths,
+                delhiDailyDeath: covid.deltadeaths,
+              })
+            : null
+        );
 
-    this.state.covidCases.statewise.map((covid) =>
-      covid.statecode == "TT"
-        ? this.setState({
-            IndiaConfirm: covid.confirmed,
-            IndiaRecover: covid.recovered,
-            IndiaActive: covid.active,
-            IndiaDeath: covid.deaths,
-          })
-        : null
-    );
+        this.state.covidCases.statewise.map((covid) =>
+          covid.statecode == "TT"
+            ? this.setState({
+                IndiaConfirm: covid.confirmed,
+                IndiaRecover: covid.recovered,
+                IndiaActive: covid.active,
+                IndiaDeath: covid.deaths,
+              })
+            : null
+        );
+      })
+      .catch(console.log);
   }
 
   render() {
@@ -205,6 +207,7 @@ export class Dashboard extends Component {
               <a
                 className="text-muted"
                 href="https://www.facebook.com/covic19delhi"
+                target="_blank"
               >
                 <div className="card-body py-5">
                   <div className="d-flex flex-row justify-content-center align-items">
@@ -224,7 +227,11 @@ export class Dashboard extends Component {
           </div>
           <div className="col-md-3 grid-margin stretch-card">
             <div className="card">
-              <a className="text-muted" href="https://twitter.com/covid19delhi">
+              <a
+                className="text-muted"
+                href="https://twitter.com/covid19delhi"
+                target="_blank"
+              >
                 <div className="card-body py-5">
                   <div className="d-flex flex-row justify-content-center align-items">
                     <i className="fab fa-twitter text-twitter fa-2x"></i>
@@ -243,7 +250,10 @@ export class Dashboard extends Component {
           </div>
           <div className="col-md-3 grid-margin stretch-card">
             <div className="card">
-              <a href="https://github.com/gauravghai/covid19delhi">
+              <a
+                href="https://github.com/gauravghai/covid19delhiproject"
+                target="_blank"
+              >
                 <div className="card-body py-5">
                   <div className="d-flex flex-row justify-content-center align-items">
                     <i className="fab text-muted fa-github fa-2x"></i>
@@ -262,7 +272,11 @@ export class Dashboard extends Component {
           </div>
           <div className="col-md-3 grid-margin stretch-card">
             <div className="card">
-              <a className="text-muted" href="https://t.me/covid19delhiDev">
+              <a
+                className="text-muted"
+                href="https://t.me/covid19delhiDev"
+                target="_blank"
+              >
                 <div className="card-body py-5">
                   <div className="d-flex flex-row justify-content-center align-items">
                     <i className="fab fa-telegram text-twitter fa-2x"></i>
